@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cartzilla | Fashion Store v.2
+    </title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="mask-icon" color="#fe6a6a" href="{% static 'safari-pinned-tab.svg' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="{% static 'css/vendor.min.css' %}">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" id="main-styles" href="{% static 'css/theme.min.css' %}">
+    <link rel="stylesheet" media="screen" id="main-styles" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" media="screen" id="main-styles" href="{% static 'css/font-awesome.min.css' %}">
+        
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MS6GHCN');</script>
+  
+  <!-- End Google Tag Manager -->
+  </head>
+  <!-- Body-->
+  <body class="toolbar-enabled">
+   
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" href="#signin-tab" data-toggle="tab" role="tab" aria-selected="true"><i class="fa fa-unlock-alt mr-2 mt-n1"></i>Sign in</a></li>
+              <li class="nav-item"><a class="nav-link" href="#signup-tab" data-toggle="tab" role="tab" aria-selected="false"><i class="fa fa-user-o mr-2 mt-n1"></i>Sign up</a></li>
+            </ul>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body tab-content py-4">
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+              <div class="form-group">
+                <label for="si-email">Email address</label>
+                <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+              <div class="form-group">
+                <label for="si-password">Password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="si-password" required>
+                  <label class="password-toggle-btn">
+                    <input class="custom-control-input" type="checkbox"><i class="fa fa-eye-slash password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group d-flex flex-wrap justify-content-between">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input class="custom-control-input" type="checkbox" id="si-remember">
+                  <label class="custom-control-label" for="si-remember">Remember me</label>
+                </div><a class="font-size-sm" href="#">Forgot password?</a>
+              </div>
+              <button class="btn btn-primary btn-block btn-shadow" type="submit">Sign in</button>
+            </form>
+            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+              <div class="form-group">
+                <label for="su-name">Full name</label>
+                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
+                <div class="invalid-feedback">Please fill in your name.</div>
+              </div>
+              <div class="form-group">
+                <label for="su-email">Email address</label>
+                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+              <div class="form-group">
+                <label for="su-password">Password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password" required>
+                  <label class="password-toggle-btn">
+                    <input class="custom-control-input" type="checkbox"><i class="fa fa-eye-slash password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="su-password-confirm">Confirm password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password-confirm" required>
+                  <label class="password-toggle-btn">
+                    <input class="custom-control-input" type="checkbox"><i class="fa fa-eye-slash password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block btn-shadow" type="submit">Sign up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Navbar 3 Level (Light)-->
+    <header class="box-shadow-sm">
+      <!-- Topbar-->
+      <div class="topbar topbar-dark bg-dark">
+        <div class="container">
+          <div class="topbar-text dropdown d-md-none"><a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">Useful links</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tel:00331697720"><i class="fa fa-life-ring fa-lg text-muted mr-2"></i>(00) 33 169 7720</a></li>
+              
+            </ul>
+          </div>
+          <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="fa fa-life-ring"></i><span class="text-muted mr-1">Support</span><a class="topbar-link" href="tel:00331697720">(00) 33 169 7720</a></div>
+          <!--<div class="cz-carousel cz-controls-static d-none d-md-block">
+            <div class="cz-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
+              <div class="topbar-text">Free shipping for order over $200</div>
+              <div class="topbar-text">We return money within 30 days</div>
+              <div class="topbar-text">Friendly 24/7 customer support</div>
+            </div>
+          </div>!-->
+          
+        </div>
+      </div>
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <div class=" bg-light">
+        <div class="navbar navbar-expand-lg navbar-light">
+          <div class="container"><a class="navbar-brand d-none d-sm-block mr-3 flex-shrink-0" href="{% url 'index'%}" style="min-width: 7rem;"><img width="142" src="{% static 'img/logo-dark.png' %}" alt="Bhutansale.com"/></a><a class="navbar-brand d-sm-none mr-2" href="{% url 'index' %}" style="min-width: 4.625rem;"><img width="74" src="{% static 'img/logo-icon.png' %}" alt="Bhutansale.com"/></a>
+            
+            <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="#signin-modal" data-toggle="modal">
+                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-user-o fa-lg"></i></div>
+                <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div></a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+
+
+    {% block content %}
+    {% endblock content %}
+
+
+
+        <!-- Footer-->
+        <footer class="bg-dark pt-5">
+            <div class="container">
+              <div class="row pb-2">
+                <div class="col-md-4 col-sm-6">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                    <h3 class="widget-title text-light">Shop departments</h3>
+                    <ul class="widget-list">
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Sneakers &amp; Athletic</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Athletic Apparel</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Sandals</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Jeans</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Shirts &amp; Tops</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Shorts</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">T-Shirts</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Swimwear</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Clogs &amp; Mules</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Bags &amp; Wallets</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Accessories</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Sunglasses &amp; Eyewear</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Watches</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                    <h3 class="widget-title text-light">Account &amp; shipping info</h3>
+                    <ul class="widget-list">
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Your account</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Shipping rates &amp; policies</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Refunds &amp; replacements</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Order tracking</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Delivery info</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Taxes &amp; fees</a></li>
+                    </ul>
+                  </div>
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                    <h3 class="widget-title text-light">About us</h3>
+                    <ul class="widget-list">
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">About company</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Our team</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">News</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="widget pb-2 mb-4">
+                    <h3 class="widget-title text-light pb-1">Stay informed</h3>
+                    <form class="validate" action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?" method="get" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form">
+                      <div class="input-group input-group-overlay flex-nowrap">
+                        <div class="input-group-prepend-overlay"><span class="input-group-text text-muted font-size-base"><i class="fa fa-envelope-o fa-lg"></i></span></div>
+                        <input class="form-control prepended-form-control" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
+                        </div>
+                      </div>
+                      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+                      </div><small class="form-text text-light opacity-50" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</small>
+                      <div class="subscribe-status"></div>
+                    </form>
+                  </div>
+                  <div class="widget pb-2 mb-4">
+                    <h3 class="widget-title text-light pb-1">Download our app</h3>
+                    <div class="d-flex flex-wrap">
+                      <div class="mr-2 mb-2"><a class="btn-market btn-apple" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a></div>
+                      <div class="mb-2"><a class="btn-market btn-google" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-5 bg-darker">
+              <div class="container">
+                <div class="row pb-3">
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="media"><i class="fa fa-rocket text-primary" style="font-size: 2.25rem;"></i>
+                      <div class="media-body pl-3">
+                        <h6 class="font-size-base text-light mb-1">Fast and free delivery</h6>
+                        <p class="mb-0 font-size-ms text-light opacity-50">Free delivery for all orders over $200</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="media"><i class="fa fa-inr text-primary" style="font-size: 2.25rem;"></i>
+                      <div class="media-body pl-3">
+                        <h6 class="font-size-base text-light mb-1">Money back guarantee</h6>
+                        <p class="mb-0 font-size-ms text-light opacity-50">We return money within 30 days</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="media"><i class="fa fa-life-ring text-primary" style="font-size: 2.25rem;"></i>
+                      <div class="media-body pl-3">
+                        <h6 class="font-size-base text-light mb-1">24/7 customer support</h6>
+                        <p class="mb-0 font-size-ms text-light opacity-50">Friendly 24/7 customer support</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="media"><i class="fa fa-credit-card-alt text-primary" style="font-size: 2.25rem;"></i>
+                      <div class="media-body pl-3">
+                        <h6 class="font-size-base text-light mb-1">Secure online payment</h6>
+                        <p class="mb-0 font-size-ms text-light opacity-50">We possess SSL / Secure сertificate</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="hr-light pb-4 mb-3">
+                <div class="row pb-2">
+                  <div class="col-md-6 text-center text-md-left mb-4">
+                    <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 mr-3" href="#"><img class="d-block" width="117" src="{% static 'img/logo-darkghh.png' %}" alt="Bhutansale.com"/></a>
+                      
+                    </div>
+                    <div class="widget widget-links widget-light">
+                      <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
+                        <li class="widget-list-item mr-4"><a class="widget-list-link" href="#">Outlets</a></li>
+                        <li class="widget-list-item mr-4"><a class="widget-list-link" href="#">Affiliates</a></li>
+                        <li class="widget-list-item mr-4"><a class="widget-list-link" href="#">Support</a></li>
+                        <li class="widget-list-item mr-4"><a class="widget-list-link" href="#">Privacy</a></li>
+                        <li class="widget-list-item mr-4"><a class="widget-list-link" href="#">Terms of use</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6 text-center text-md-right mb-4">
+                    <div class="mb-3"><a class="social-btn sb-light sb-twitter ml-2 mb-2" href="#"><i class="fa fa-twitter"></i></a><a class="social-btn sb-light sb-facebook ml-2 mb-2" href="#"><i class="fa fa-facebook"></i></a><a class="social-btn sb-light sb-instagram ml-2 mb-2" href="#"><i class="fa fa-instagram"></i></a><a class="social-btn sb-light sb-pinterest ml-2 mb-2" href="#"><i class="fa fa-pinterest-p"></i></a><a class="social-btn sb-light sb-youtube ml-2 mb-2" href="#"><i class="fa fa-youtube-play"></i></a>
+                    </div><img class="d-inline-block" width="187" src="img/cards-alt.png" alt="Payment methods"/>
+                    <div class="mb-3"><a class="social-btn sb-light sb-twitter ml-2 mb-2" href="#"><i class="fa fa-cc-jcb fa-lg" aria-hidden="true"></i></a><a class="social-btn sb-light sb-facebook ml-2 mb-2" href="#"><i class="fa fa-cc-discover fa-lg" aria-hidden="true"></i></a><a class="social-btn sb-light sb-instagram ml-2 mb-2" href="#"><i class="fa fa-cc-mastercard fa-lg" aria-hidden="true"></i></a><a class="social-btn sb-light sb-pinterest ml-2 mb-2" href="#"><i class="fa fa-money fa-lg" aria-hidden="true"></i></a><a class="social-btn sb-light sb-youtube ml-2 mb-2" href="#"><i class="fa fa-cc-visa fa-lg" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="pb-4 font-size-xs text-light opacity-50 text-center text-md-left">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+              </div>
+            </div>
+          </footer>
+          
+          <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon fa fa-arrow-up fa-lg" aria-hidden="true">   </i></a>
+          <!-- JavaScript libraries, plugins and custom scripts-->
+          <script src="{% static 'js/vendor.min.js' %}"></script>
+          <script src="{% static 'js/theme.min.js' %}"></script>
+        </body>
+      </html>

@@ -1,0 +1,170 @@
+{% extends 'v1/main.html'%}
+{% load static %}
+{% block content %}
+
+
+    <!-- Page Content-->
+    <!-- Dashboard header-->
+    <div class="page-title-overlap bg-accent pt-4">
+      <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+        <div class="media media-ie-fix align-items-center pb-3">
+          <div class="media-body pl-3">
+            <h3 class="text-light font-size-lg mb-0">{{ request.user.first_name}} {{ request.user.last_name}}</h3><span class="d-block text-light font-size-ms opacity-60 py-1">Thank You for using Bhutansale.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-5 pb-3">
+      <div class="bg-light box-shadow-lg rounded-lg overflow-hidden">
+        <div class="row">
+          <!-- Sidebar-->
+          <aside class="col-lg-4">
+            <!-- Account menu toggler (hidden on screens larger 992px)-->
+            <div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" href="#account-menu" data-toggle="collapse"><i class="fa fa-bars fa-lg mr-2"></i>Account menu</a></div>
+            <!-- Actual menu-->
+            <div class="cz-sidebar-static h-100 p-0">
+              <div class="secondary-nav collapse border-right" id="account-menu">
+                <div class="bg-secondary p-4">
+                  <h3 class="font-size-sm mb-0 text-muted">Account</h3>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_index' %}"><i class="fa fa-cogs opacity-60 mr-2"></i>Settings</a></li>
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="{% url 'user_orders' %}"><i class="fa fa-shopping-basket opacity-60 mr-2"></i>Purchases</a></li>
+                  <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_favorites' %}"><i class="fa fa-heart-o opacity-60 mr-2"></i>Favorites<span class="font-size-sm text-muted ml-auto">4</span></a></li>
+                </ul>
+                  <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'logout' %}"><i class="fa fa-sign-out opacity-60 mr-2"></i>Sign out</a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- Content-->
+          <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+            <div class="pt-2 px-4 pl-lg-0 pr-xl-5">
+              <!-- Title-->
+              <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+                <h2 class="h3 py-2 mr-2 text-center text-sm-left">Your purchases</h2>
+                <div class="py-2">
+                  <div class="form-inline flex-nowrap pb-3">
+                    <label class="text-nowrap mr-2" for="sorting">Sort by:</label>
+                    <select class="custom-select custom-select-sm mr-2" id="sorting">
+                      <option>Date Purchased</option>
+                      <option>Product Name</option>
+                      <option>Price</option>
+                      <option>Your Rating</option>
+                      <option>Updates</option>
+                    </select>
+                    <button class="btn btn-outline-secondary btn-sm px-2" type="button"><i class="czi-arrow-up"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- Products list-->
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th01.jpg" alt="Product"></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Top View Smartwatch 3D Render</a></h3>
+                  <div class="text-accent font-size-sm mb-1">Standard license</div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="update-info-1" checked>
+                    <label class="custom-control-label font-size-ms" for="update-info-1">Notify me when this product is updated</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-sm-start pt-2">
+                    <div class="my-2">
+                      <button class="btn btn-primary btn-sm mr-3" type="button"><i class="czi-download mr-1"></i>Download</button>
+                    </div><a class="d-block text-muted text-center my-2" href="#">
+                      <div class="star-rating"><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i>
+                      </div>
+                      <div class="font-size-xs">Reate this product</div></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th02.jpg" alt="Product"></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">UI Isometric Devices Pack (PSD)</a></h3>
+                  <div class="text-accent font-size-sm mb-1">Extended license</div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="update-info-2" checked>
+                    <label class="custom-control-label font-size-ms" for="update-info-2">Notify me when this product is updated</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-sm-start pt-2">
+                    <div class="my-2">
+                      <button class="btn btn-primary btn-sm mr-3" type="button"><i class="czi-download mr-1"></i>Download</button>
+                    </div><a class="d-block text-muted text-center my-2" href="#">
+                      <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
+                      </div>
+                      <div class="font-size-xs">You rated this product</div></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th03.jpg" alt="Product"></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Cartzilla - Multipurpose E-Commerce Template</a></h3>
+                  <div class="text-accent font-size-sm mb-1">Standard license</div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="update-info-3" checked>
+                    <label class="custom-control-label font-size-ms" for="update-info-3">Notify me when this product is updated</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-sm-start pt-2">
+                    <div class="my-2">
+                      <button class="btn btn-primary btn-sm mr-3" type="button"><i class="czi-download mr-1"></i>Download</button>
+                    </div><a class="d-block text-muted text-center my-2" href="#">
+                      <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
+                      </div>
+                      <div class="font-size-xs">You rated this product</div></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th04.jpg" alt="Product"></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Hardcover Book Catalog Mockup (PSD)</a></h3>
+                  <div class="text-accent font-size-sm mb-1">Standard license</div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="update-info-4">
+                    <label class="custom-control-label font-size-ms" for="update-info-4">Notify me when this product is updated</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-sm-start pt-2">
+                    <div class="my-2">
+                      <button class="btn btn-primary btn-sm mr-3" type="button"><i class="czi-download mr-1"></i>Download</button>
+                    </div><a class="d-block text-muted text-center my-2" href="#">
+                      <div class="star-rating"><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i>
+                      </div>
+                      <div class="font-size-xs">Reate this product</div></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th05.jpg" alt="Product"></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Photo of Business Meeting</a></h3>
+                  <div class="text-accent font-size-sm mb-1">Standard license</div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="update-info-5">
+                    <label class="custom-control-label font-size-ms" for="update-info-5">Notify me when this product is updated</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-sm-start pt-2">
+                    <div class="my-2">
+                      <button class="btn btn-primary btn-sm mr-3" type="button"><i class="czi-download mr-1"></i>Download</button>
+                    </div><a class="d-block text-muted text-center my-2" href="#">
+                      <div class="star-rating"><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i><i class="sr-star czi-star"></i>
+                      </div>
+                      <div class="font-size-xs">Reate this product</div></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Pagination-->
+              <nav class="d-md-flex justify-content-between align-items-center text-center text-md-left mt-4" aria-label="Page navigation">
+                <div class="d-md-flex align-items-center w-100"><span class="font-size-sm text-muted mr-md-3">Showing 5 of 9 products</span>
+                  <div class="progress w-100 my-3 mx-auto mx-md-0" style="max-width: 10rem; height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 56%;" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-primary btn-sm" type="button">More products</button>
+              </nav>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+ {% endblock content%}

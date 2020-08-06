@@ -1,0 +1,319 @@
+{% extends 'v1/main.html'%}
+{% load static %}
+{% block content %}
+
+  <body class="toolbar-enabled">
+    
+    <!-- Add Payment Method-->
+    <form class="needs-validation modal fade" method="post" id="add-payment" tabindex="-1" novalidate>
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add a payment method</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="custom-control custom-radio mb-4">
+              <input class="custom-control-input" type="radio" id="paypal" name="payment-method">
+              <label class="custom-control-label" for="paypal">PayPal<img class="d-inline-block align-middle ml-2" src="img/card-paypal.png" width="39" alt="PayPal"></label>
+            </div>
+            <div class="custom-control custom-radio mb-4">
+              <input class="custom-control-input" type="radio" id="card" name="payment-method" checked>
+              <label class="custom-control-label" for="card">Credit / Debit card<img class="d-inline-block align-middle ml-2" src="img/cards.png" width="187" alt="Credit card"></label>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <input class="form-control" type="text" name="number" placeholder="Card Number" required>
+                <div class="invalid-feedback">Please fill in the card number!</div>
+              </div>
+              <div class="form-group col-sm-6">
+                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                <div class="invalid-feedback">Please provide name on the card!</div>
+              </div>
+              <div class="form-group col-sm-3">
+                <input class="form-control" type="text" name="expiry" placeholder="MM/YY" required>
+                <div class="invalid-feedback">Please provide card expiration date!</div>
+              </div>
+              <div class="form-group col-sm-3">
+                <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
+                <div class="invalid-feedback">Please provide card CVC code!</div>
+              </div>
+              <div class="col-sm-6">
+                <button class="btn btn-primary btn-block mt-0" type="submit">Register this card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <!-- Page Content-->
+    <!-- Dashboard header-->
+    <div class="page-title-overlap bg-accent pt-4">
+      <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+        <div class="media media-ie-fix align-items-center pb-3">
+          
+          <div class="media-body pl-3">
+            <h3 class="text-light font-size-lg mb-0">{{ request.user.first_name}} {{ request.user.last_name}}</h3><span class="d-block text-light font-size-ms opacity-60 py-1">Thank You for using Bhutansale.com</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="container mb-5 pb-3">
+      <div class="bg-light box-shadow-lg rounded-lg overflow-hidden">
+        <div class="row">
+          <!-- Sidebar-->
+          <aside class="col-lg-4">
+            <!-- Account menu toggler (hidden on screens larger 992px)-->
+            <div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" href="#account-menu" data-toggle="collapse"><i class="fa fa-bars fa-lg mr-2"></i>Account menu</a></div>
+            <!-- Actual menu-->
+            <div class="cz-sidebar-static h-100 p-0">
+              <div class="secondary-nav collapse border-right" id="account-menu">
+                <div class="bg-secondary p-4">
+                  <h3 class="font-size-sm mb-0 text-muted">Account</h3>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="{% url 'user_index' %}"><i class="fa fa-cogs opacity-60 mr-2"></i>Settings</a></li>
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_orders' %}"><i class="fa fa-shopping-basket opacity-60 mr-2"></i>Purchases</a></li>
+                  <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_favorites' %}"><i class="fa fa-heart-o opacity-60 mr-2"></i>Favorites<span class="font-size-sm text-muted ml-auto">4</span></a></li>
+                </ul>
+                <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'logout' %}"><i class="fa fa-sign-out opacity-60 mr-2"></i>Sign out</a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- Content-->
+          <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+            <div class="pt-2 px-4 pl-lg-0 pr-xl-5">
+              <h2 class="h3 py-2 text-center text-sm-left">Settings</h2>
+              <!-- Tabs-->
+              <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="nav-item"><a class="nav-link px-0 active" href="#profile" data-toggle="tab" role="tab">
+                    <div class="d-none d-lg-block"><i class="fa fa-user-o opacity-60 mr-2"></i>Profile</div>
+                    <div class="d-lg-none text-center"><i class="fa fa-user-o opacity-60 d-block font-size-xl mb-2"></i><span class="font-size-ms">Profile</span></div></a></li>
+                <li class="nav-item"><a class="nav-link px-0" href="#notifications" data-toggle="tab" role="tab">
+                    <div class="d-none d-lg-block"><i class="fa fa-bell-o opacity-60 mr-2"></i>Notifications</div>
+                    <div class="d-lg-none text-center"><i class="fa fa-bell-o opacity-60 d-block font-size-xl mb-2"></i><span class="font-size-ms">Notifications</span></div></a></li>
+                <li class="nav-item"><a class="nav-link px-0" href="#payment" data-toggle="tab" role="tab">
+                    <div class="d-none d-lg-block"><i class="fa fa-credit-card-alt opacity-60 mr-2"></i>Saved Cards</div>
+                    <div class="d-lg-none text-center"><i class="fa fa-credit-card-alt opacity-60 d-block font-size-xl mb-2"></i><span class="font-size-ms">Saved Cards</span></div></a></li>
+              </ul>
+              <!-- Tab content-->
+              <div class="tab-content">
+                <!-- Profile-->
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                          <form class="form-group" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                          <div class="row">
+                          <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-fn">First Name</label>
+                            <input class="form-control" type="text" id="dashboard-fn" value="{{user.first_name}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-ln">Last Name</label>
+                            <input class="form-control" type="text" id="dashboard-ln" value="{{user.last_name}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-email">Email address</label>
+                            <input class="form-control" type="text" id="dashboard-email" value="{{user.email}}"  disabled>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-profile-name">User Name</label>
+                            <input class="form-control" type="text" id="dashboard-profile-name" value="{{user.username}}"disabled >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-country">Country</label>
+                            <input class="form-control" type="text" id="dashboard-email" value="Bhutan"  disabled>
+                            
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-city">City</label>
+                            <input class="form-control" type="text" id="dashboard-city" value="{{profile.city}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-address">Address 1</label>
+                            <input class="form-control" type="text" id="dashboard-address" value="{{address1.address1}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-address">Address 2</label>
+                            <input class="form-control" type="text" id="dashboard-address" value="{{address2.address2}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-address">Address 3</label>
+                            <input class="form-control" type="text" id="dashboard-address" value="{{address3.address3}}" >
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="dashboard-zip">ZIP Code</label>
+                            <input class="form-control" type="text" id="dashboard-zip" value="{{zipcode.zipcode}}" >
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <hr class="mt-2 mb-3">
+                          <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="custom-control custom-checkbox d-block">
+                              <input class="custom-control-input" type="checkbox" id="freelancer" checked>
+                              <label class="custom-control-label" for="freelancer">I'm available for freelance</label>
+                            </div>
+                            <button class="btn btn-primary mt-3 mt-sm-0" type="submit">Save changes</button>
+                          </div>
+                        </div>
+                  </form>
+                  </div>
+                </div>
+                <!-- Notifications-->
+                <div class="tab-pane fade" id="notifications" role="tabpanel">
+                  <div class="bg-secondary rounded-lg p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-disable-all">
+                      <label class="custom-control-label font-weight-medium" for="nf-disable-all">Disable all notifications</label>
+                    </div>
+                  </div>
+                  <div class="border-bottom p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-product-sold" checked>
+                      <label class="custom-control-label" for="nf-product-sold">Product sold notifications</label>
+                    </div><small class="form-text text-muted">Send an email when someone purchased one of my products</small>
+                  </div>
+                  <div class="border-bottom p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-product-updated" checked>
+                      <label class="custom-control-label" for="nf-product-updated">Product update notifications</label>
+                    </div><small class="form-text text-muted">Send an email when a product I've purchased is updated</small>
+                  </div>
+                  <div class="border-bottom p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-product-comment" checked>
+                      <label class="custom-control-label" for="nf-product-comment">Product comment notifications</label>
+                    </div><small class="form-text text-muted">Send an email when someone comments on one of my products</small>
+                  </div>
+                  <div class="border-bottom p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-product-review" checked>
+                      <label class="custom-control-label" for="nf-product-review">Product review notification</label>
+                    </div><small class="form-text text-muted">Send an email when someone leaves a review with their rating</small>
+                  </div>
+                  <div class="border-bottom p-4">
+                    <div class="custom-control custom-switch">
+                      <input class="custom-control-input" type="checkbox" id="nf-daily-summary">
+                      <label class="custom-control-label" for="nf-daily-summary">Daily summary emails</label>
+                    </div><small class="form-text text-muted">Send me a daily summary of all products sold, commented or reviewed</small>
+                  </div>
+                  <div class="text-right mt-4">
+                    <button class="btn btn-primary" type="button">Save changes</button>
+                  </div>
+                </div>
+                <!-- Payment methods-->
+                <div class="tab-pane fade" id="payment" role="tabpanel">
+                  <div class="bg-secondary rounded-lg p-4 mb-4">
+                    <p class="font-size-sm text-muted mb-0">Primary payment method is used by default</p>
+                  </div>
+                  <div class="table-responsive font-size-md">
+                    <table class="table table-hover mb-0">
+                      <thead>
+                        <tr>
+                          <th>Your credit / debit cards</th>
+                          <th>Name on card</th>
+                          <th>Expires on</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-3 align-middle">
+                            <div class="media align-items-center"><img class="mr-2" src="img/card-visa.png" width="39" alt="Visa">
+                              <div class="media-body"><span class="font-weight-medium text-heading mr-1">Visa</span>ending in 4999<span class="align-middle badge badge-info ml-2">Primary</span></div>
+                            </div>
+                          </td>
+                          <td class="py-3 align-middle">John doe</td>
+                          <td class="py-3 align-middle">08 / 2019</td>
+                          <td class="py-3 align-middle"><a class="nav-link-style mr-2" href="#" data-toggle="tooltip" title="Edit"><i class="czi-edit"></i></a><a class="nav-link-style text-danger" href="#" data-toggle="tooltip" title="Remove">
+                              <div class="czi-trash"></div></a></td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 align-middle">
+                            <div class="media align-items-center"><img class="mr-2" src="img/card-master.png" width="39" alt="MesterCard">
+                              <div class="media-body"><span class="font-weight-medium text-heading mr-1">MasterCard</span>ending in 0015</div>
+                            </div>
+                          </td>
+                          <td class="py-3 align-middle">John doe</td>
+                          <td class="py-3 align-middle">11 / 2021</td>
+                          <td class="py-3 align-middle"><a class="nav-link-style mr-2" href="#" data-toggle="tooltip" title="Edit"><i class="czi-edit"></i></a><a class="nav-link-style text-danger" href="#" data-toggle="tooltip" title="Remove">
+                              <div class="czi-trash"></div></a></td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 align-middle">
+                            <div class="media align-items-center"><img class="mr-2" src="img/card-paypal.png" width="39" alt="PayPal">
+                              <div class="media-body"><span class="font-weight-medium text-heading mr-1">PayPal</span>j.doe@example.com</div>
+                            </div>
+                          </td>
+                          <td class="py-3 align-middle">&mdash;</td>
+                          <td class="py-3 align-middle">&mdash;</td>
+                          <td class="py-3 align-middle"><a class="nav-link-style mr-2" href="#" data-toggle="tooltip" title="Edit"><i class="czi-edit"></i></a><a class="nav-link-style text-danger" href="#" data-toggle="tooltip" title="Remove">
+                              <div class="czi-trash"></div></a></td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 align-middle">
+                            <div class="media align-items-center"><img class="mr-2" src="img/card-visa.png" width="39" alt="Visa">
+                              <div class="media-body"><span class="font-weight-medium text-heading mr-1">Visa</span>ending in 6073</div>
+                            </div>
+                          </td>
+                          <td class="py-3 align-middle">John doe</td>
+                          <td class="py-3 align-middle">09 / 2021</td>
+                          <td class="py-3 align-middle"><a class="nav-link-style mr-2" href="#" data-toggle="tooltip" title="Edit"><i class="czi-edit"></i></a><a class="nav-link-style text-danger" href="#" data-toggle="tooltip" title="Remove">
+                              <div class="czi-trash"></div></a></td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 align-middle">
+                            <div class="media align-items-center"><img class="mr-2" src="img/card-visa.png" width="39" alt="Visa">
+                              <div class="media-body"><span class="font-weight-medium text-heading mr-1">Visa</span>ending in 9791</div>
+                            </div>
+                          </td>
+                          <td class="py-3 align-middle">John doe</td>
+                          <td class="py-3 align-middle">05 / 2021</td>
+                          <td class="py-3 align-middle"><a class="nav-link-style mr-2" href="#" data-toggle="tooltip" title="Edit"><i class="czi-edit"></i></a><a class="nav-link-style text-danger" href="#" data-toggle="tooltip" title="Remove">
+                              <div class="czi-trash"></div></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr class="pb-4">
+                  <div class="text-sm-right"><a class="btn btn-primary" href="#add-payment" data-toggle="modal">Add payment method</a></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toolbar for handheld devices-->
+    <div class="cz-handheld-toolbar">
+      <div class="d-table table-fixed w-100"><a class="d-table-cell cz-handheld-toolbar-item" href="account-wishlist.html"><span class="cz-handheld-toolbar-icon"><i class="fa fa-heart-o"></i></span><span class="cz-handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell cz-handheld-toolbar-item" href="#navbarCollapse" data-toggle="collapse" onclick="window.scrollTo(0, 0)"><span class="cz-handheld-toolbar-icon"><i class="fa fa-bars fa-lg"></i></span><span class="cz-handheld-toolbar-label">Menu</span></a><a class="d-table-cell cz-handheld-toolbar-item" href="shop-cart.html"><span class="cz-handheld-toolbar-icon"><i class="fa fa-shopping-basket"></i><span class="badge badge-primary badge-pill ml-1">4</span></span><span class="cz-handheld-toolbar-label">$265.00</span></a>
+      </div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon fa fa-arrow-up">   </i></a>
+    <!-- JavaScript libraries, plugins and custom scripts-->
+    <script src="js/vendor.min.js"></script>
+    <script src="js/theme.min.js"></script>
+  </body>
+{% endblock %}
