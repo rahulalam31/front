@@ -2,9 +2,8 @@
 {% load static %}
 <html lang="en">
   <head>
-    <script data-ad-client="ca-pub-1219137501056370" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <meta charset="utf-8">
-    <title>BHUTANSALE.com | Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books &amp; More. Best Offers! only for BHUTAN!!!
+    <title>Cartzilla | Fashion Store v.2
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
@@ -36,16 +35,6 @@
   })(window,document,'script','dataLayer','GTM-MS6GHCN');</script>
   
   <!-- End Google Tag Manager -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154373309-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-154373309-1');
-</script>
-
   </head>
   <!-- Body-->
   <body class="toolbar-enabled">
@@ -53,7 +42,7 @@
     <noscript>
       <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
     </noscript>
-    
+   
     <!-- Navbar 3 Level (Light)-->
     <header class="box-shadow-sm">
       <!-- Topbar-->
@@ -88,20 +77,10 @@
             </div>
             <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
-                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-bars fa-lg"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="{% url 'user_favorites' %}"><span class="navbar-tool-tooltip">Wishlist</span>
-                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-heart-o fa-lg"></i></div></a>
-                <div class="navbar-tool dropdown ml-2">
-                  <a class="navbar-tool-icon-box border dropdown-toggle" href="{% url 'user_index' %}"><div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-user-o fa-lg"></i></div></a>
-                  <a class="navbar-tool-text ml-n1" href="{% url 'user_index' %}"><div class="navbar-tool-text ml-n3"><small>Hello,{% if user.is_authenticated  %} {{request.user.first_name}} {% else %}Sign in{% endif %}</small>My Account</div></a>
-                  <div class="dropdown-menu dropdown-menu-right" style="min-width: 14rem;">
-                    <h6 class="dropdown-header">Account</h6>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'user_index' %}"><i class="fa fa-cogs opacity-60 mr-2"></i>Settings</a>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'user_orders' %}"><i class="fa fa-shopping-basket opacity-60 mr-2"></i>Purchases</a>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'user_favorites' %}"><i class="fa fa-heart-o opacity-60 mr-2"></i>Favorites<span class="font-size-xs text-muted ml-auto">4</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}"><i class="fa fa-sign-out opacity-60 mr-2"></i>Sign Out</a>
-                  </div>
-                </div>
+                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-bars fa-lg"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html"><span class="navbar-tool-tooltip">Wishlist</span>
+                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-heart-o fa-lg"></i></div></a><a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="{% url 'login' %}" data-toggle="modal">
+                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fa fa-user-o fa-lg"></i></div>
+                <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div></a>
               <div class="navbar-tool dropdown ml-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{% url 'cart' %}"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon fa fa-shopping-basket fa-2x" ></i></a><a class="navbar-tool-text" href="{% url 'cart' %}"><small>My Cart</small>$265.00</a>
                 <!-- Cart dropdown-->
                 <div class="dropdown-menu dropdown-menu-right" style="width: 20rem;">

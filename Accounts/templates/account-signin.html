@@ -1,0 +1,59 @@
+{% extends 'v1/main.html'%}
+{% load static %}
+{% block content %}
+   
+    <!-- Page Content-->
+    <div class="container py-4 py-lg-5 my-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card border-0 box-shadow" >
+            <div class="card-body">
+              <h2 class="h4 mb-1">Sign in</h2>
+              <div class="py-3">
+                <h3 class="d-inline-block align-middle font-size-base font-weight-semibold mb-2 mr-2">With social account:</h3>
+                <div class="d-inline-block align-middle"><a class="social-btn sb-google mr-2 mb-2" href="#" data-toggle="tooltip" title="Sign in with Google"><i class="fa fa-google"></i></a><a class="social-btn sb-facebook mr-2 mb-2" href="#" data-toggle="tooltip" title="Sign in with Facebook"><i class="fa fa-facebook"></i></a><a class="social-btn sb-twitter mr-2 mb-2" href="#" data-toggle="tooltip" title="Sign in with Twitter"><i class="fa fa-twitter"></i></a></div>
+              </div>
+              <hr>
+              <h3 class="font-size-base pt-4 pb-2">Or using form below</h3>
+              <form class="needs-validation" novalidate method="POST">
+                {% csrf_token %}
+                <div class="input-group-overlay form-group">
+                  <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div>
+                  <input class="form-control prepended-form-control" name="username" type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group-overlay form-group">
+                  <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="fa fa-lock"></i></span></div>
+                  <div class="password-toggle">
+                    <input class="form-control prepended-form-control" name="password" type="password" placeholder="Password" required>
+                    <label class="password-toggle-btn">
+                      <input class="custom-control-input" type="checkbox"><i class="fa fa-eye-slash password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap justify-content-between">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" checked id="remember_me">
+                    <label class="custom-control-label" for="remember_me">Remember me</label>
+                  </div><a class="nav-link-inline font-size-sm" href="account-password-recovery.html">Forgot password?</a>
+                </div>
+                <hr class="mt-4">
+                
+                <div class="text-right pt-4">
+                              {% for message in messages %}
+                                <p >{{message}}</p>
+                              {% endfor %}
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-sign-in mr-2 ml-n21"></i>Sign In</button>
+                  <hr class="mt-4">
+                  <p>No account? <a class="nav-link-inline font-size-sm" href="{% url 'register' %}">Sign up</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+
+
+    {% endblock content %}

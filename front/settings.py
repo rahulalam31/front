@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'v1.apps.V1Config',
     'seller.apps.SellerConfig',
     'user.apps.UserConfig',
+    'Accounts.apps.AccountsConfig',
     'mptt',
 ]
 
@@ -75,7 +76,12 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'seller.User'
+AUTH_USER_MODEL = 'Accounts.User'
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 WSGI_APPLICATION = 'front.wsgi.application'
 

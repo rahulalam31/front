@@ -1,0 +1,115 @@
+{% extends 'v1/main.html'%}
+{% load static %}
+{% block content %}
+
+
+    <!-- Page Content-->
+    <!-- Dashboard header-->
+    <div class="page-title-overlap bg-accent pt-4">
+      <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+        <div class="media media-ie-fix align-items-center pb-3">
+          <div class="media-body pl-3">
+            <h3 class="text-light font-size-lg mb-0">{{ request.user.first_name}} {{ request.user.last_name}}</h3><span class="d-block text-light font-size-ms opacity-60 py-1">Thank You for using Bhutansale.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-5 pb-3">
+      <div class="bg-light box-shadow-lg rounded-lg overflow-hidden">
+        <div class="row">
+          <!-- Sidebar-->
+          <aside class="col-lg-4">
+            <!-- Account menu toggler (hidden on screens larger 992px)-->
+            <div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" href="#account-menu" data-toggle="collapse"><i class="fa fa-bars fa-lg mr-2"></i>Account menu</a></div>
+            <!-- Actual menu-->
+            <div class="cz-sidebar-static h-100 p-0">
+              <div class="secondary-nav collapse border-right" id="account-menu">
+                <div class="bg-secondary p-4">
+                  <h3 class="font-size-sm mb-0 text-muted">Account</h3>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_index' %}"><i class="fa fa-cogs opacity-60 mr-2"></i>Settings</a></li>
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'user_orders' %}"><i class="fa fa-shopping-basket opacity-60 mr-2"></i>Purchases</a></li>
+                  <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="dashboard-favorites.html"><i class="fa fa-heart-o opacity-60 mr-2"></i>Favorites<span class="font-size-sm text-muted ml-auto">4</span></a></li>
+                </ul>
+                  <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{% url 'logout' %}"><i class="fa fa-sign-out opacity-60 mr-2"></i>Sign out</a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- Content-->
+          <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+            <div class="pt-2 px-4 pl-lg-0 pr-xl-5">
+              <h2 class="h3 pt-2 pb-4 mb-0 text-center text-sm-left border-bottom">Favorites<span class="badge badge-secondary font-size-sm text-body align-middle ml-2">4</span></h2>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th02.jpg" alt="Product"><span class="close-floating" data-toggle="tooltip" title="Remove from Favorites"><i class="czi-close"></i></span></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">UI Isometric Devices Pack (PSD)</a></h3>
+                  <div class="d-inline-block text-accent">$23.<small>00</small></div><a class="d-inline-block text-accent font-size-ms border-left ml-2 pl-2" href="marketplace-vendor.html">by uidesigner</a>
+                  <div class="form-inline pt-2">
+                    <select class="custom-select custom-select-sm my-1 mr-2">
+                      <option>Standard license</option>
+                      <option>Extended license</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm mx-auto mx-sm-0 my-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="fa fa-shopping-basket mr-1"></i>Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th06.jpg" alt="Product"><span class="close-floating" data-toggle="tooltip" title="Remove from Favorites"><i class="czi-close"></i></span></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Project Devices Showcase (PSD)</a></h3>
+                  <div class="d-inline-block text-accent">$18.<small>00</small></div><a class="d-inline-block text-accent font-size-ms border-left ml-2 pl-2" href="marketplace-vendor.html">by pixels</a>
+                  <div class="form-inline pt-2">
+                    <select class="custom-select custom-select-sm my-1 mr-2">
+                      <option>Standard license</option>
+                      <option>Extended license</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm mx-auto mx-sm-0 my-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="fa fa-shopping-basket mr-1"></i>Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th01.jpg" alt="Product"><span class="close-floating" data-toggle="tooltip" title="Remove from Favorites"><i class="czi-close"></i></span></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Top View Smartwatch 3D Render</a></h3>
+                  <div class="d-inline-block text-accent">$19.<small>00</small></div><a class="d-inline-block text-accent font-size-ms border-left ml-2 pl-2" href="marketplace-vendor.html">by modello</a>
+                  <div class="form-inline pt-2">
+                    <select class="custom-select custom-select-sm my-1 mr-2">
+                      <option>Standard license</option>
+                      <option>Extended license</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm mx-auto mx-sm-0 my-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="fa fa-shopping-basket mr-1"></i>Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Product-->
+              <div class="media d-block d-sm-flex align-items-center pt-4 pb-2"><a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" href="marketplace-single.html" style="width: 12.5rem;"><img class="rounded-lg" src="img/marketplace/products/th07.jpg" alt="Product"><span class="close-floating" data-toggle="tooltip" title="Remove from Favorites"><i class="czi-close"></i></span></a>
+                <div class="media-body text-center text-sm-left">
+                  <h3 class="h6 product-title mb-2"><a href="marketplace-single.html">Gravity Devices UI Mockup (PSD)</a></h3>
+                  <div class="d-inline-block text-accent">$15.<small>00</small></div><a class="d-inline-block text-accent font-size-ms border-left ml-2 pl-2" href="marketplace-vendor.html">by pixels</a>
+                  <div class="form-inline pt-2">
+                    <select class="custom-select custom-select-sm my-1 mr-2">
+                      <option>Standard license</option>
+                      <option>Extended license</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm mx-auto mx-sm-0 my-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="fa fa-shopping-basket mr-1"></i>Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- Toast: Added to Cart-->
+    <div class="toast-container toast-bottom-center">
+      <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white"><i class="czi-check-circle mr-2"></i>
+          <h6 class="font-size-sm text-white mb-0 mr-auto">Added to cart!</h6>
+          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">This item has been added to your cart.</div>
+      </div>
+    </div>
+{% endblock content%}

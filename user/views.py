@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.forms import inlineformset_factory
@@ -9,11 +8,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from user.models import UserProfile
+
 from .forms import OrderForm, CreateUserForm
 from .forms import UserUpdateForm, ProfileUpdateForm
-from seller.models import User
-# from django.contrib.auth import get_user_model
+from Accounts.models import CustomerProfile
+from front.settings import AUTH_USER_MODEL
+#from django.contrib.auth import get_user_model
 # User = get_user_model()
 
 #from .filters import OrderFilter
@@ -26,7 +26,7 @@ from seller.models import User
 def index(request):
     #category = Category.objects.all()
     current_user = request.user  # Access User Session information
-    profile = UserProfile.objects.get(user_id=current_user.id)
+    profile = CustomerProfile.objects.get(user_id=current_user.id)
     context = {#'category': category,
                'profile': profile,
                 }
@@ -49,15 +49,15 @@ def registerPage(request):
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
-                User.is_customer = True
+                #user.is_customer = True
                 form.save()
                 username = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password1')
-                user = authenticate(username=username, password=password)
-                login(request, user)
+                usera = authenticate(username=username, password=password)
+                login(request, usera)
                 # Create data in profile table for user
                 current_user = request.user
-                data=UserProfile()
+                data=CustomerProfile()
                 data.user_id=current_user.id
                 data.save()
                 messages.success(request, 'Your account has been created!')

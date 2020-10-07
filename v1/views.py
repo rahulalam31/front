@@ -1,13 +1,12 @@
 from django.shortcuts import render
-from user.models import UserProfile
-
+from Accounts.models import CustomerProfile
 # Create your views here.
 
 def index(request):
 
     if request.user.is_authenticated:
         current_user = request.user # Access User Session information
-        profile = UserProfile.objects.get(user_id=current_user.id)
+        profile = CustomerProfile.objects.get(user_id=current_user.id)
         context = {#'category': category,
                'profile': profile}
         return render(request, 'v1/index.html', context)
